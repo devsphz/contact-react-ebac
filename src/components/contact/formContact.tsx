@@ -5,7 +5,6 @@ import Cleave from 'cleave.js/react'
 import { addContact, editContact } from '../../store/contactSlice'
 import { Button, Form, Input } from './styles'
 import type { Contact } from '../../types/contact'
-import Cleave from 'cleave.js/react'
 interface FormContactProps {
   currentContact: Contact | null
   setCurrentContact: React.Dispatch<React.SetStateAction<Contact | null>>
@@ -81,7 +80,7 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
           fontSize: '16px'
         }}
         value={phone}
-        onChange={(e) => setPhone(e.target.value)}
+        onChange={(e: { target: { value: React.SetStateAction<string> } }) => setPhone(e.target.value)}
         options={{ delimiters: ['(', ') ', ' ', '-'], blocks: [0, 2, 5, 4], numericOnly: true }}
         placeholder="(99) 99999-9999"
       />
