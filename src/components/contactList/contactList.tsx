@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../store/store'
 import { removeContact } from '../../store/contactSlice'
 import type { Contact } from '../../types/contact'
-import { List, ListItem, Button } from './styles'
+import { List, ListItem, Button, ContactInfo, ButtonGroup } from './styles'
 
 interface ContactListProps { // Props
   setCurrentContact: React.Dispatch<React.SetStateAction<Contact | null>>
@@ -18,16 +18,16 @@ const ContactList: React.FC<ContactListProps> = ({ setCurrentContact }) => {
     <List>
       {contacts.map(contact => ( // key identifica os itens
         <ListItem key={contact.id}>
-          <div>
-            <strong>{contact.name}</strong> <br />
-            {contact.email} <br />
-            {contact.phone}
-          </div>
-          <div>
-            <Button onClick={() => setCurrentContact(contact)}>Editar</Button>
-            <Button onClick={() => dispatch(removeContact(contact.id))}>Remover</Button>
-          </div>
-        </ListItem>
+        <ContactInfo>
+          <strong>{contact.name}</strong><br />
+          {contact.email}<br />
+          {contact.phone}
+        </ContactInfo>
+        <ButtonGroup>
+          <Button onClick={() => setCurrentContact(contact)}>Editar</Button>
+          <Button onClick={() => dispatch(removeContact(contact.id))}>Remover</Button>
+        </ButtonGroup>
+      </ListItem>
       ))}
     </List>
   )

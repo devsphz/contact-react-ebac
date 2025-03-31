@@ -88,7 +88,7 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
         placeholder="(99) 99999-9999"
       />
       <Button type="submit">
-        {currentContact ? 'Editar Contato' : 'Adicionar Contato'}
+        {currentContact ? 'Salvar Contato' : 'Adicionar Contato'}
       </Button>
     </Form>
   )
