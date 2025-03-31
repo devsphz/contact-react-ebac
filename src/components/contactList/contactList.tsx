@@ -1,3 +1,4 @@
+// Importações
 import type React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../store/store'

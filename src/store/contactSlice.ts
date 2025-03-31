@@ -1,3 +1,4 @@
+// Importações
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { Contact } from '../types/contact' // estrutura do nosso contato
 

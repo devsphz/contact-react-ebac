@@ -1,3 +1,4 @@
+// Importações
 import type React from 'react'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux' // usando o redux para o nosso gerenciamento

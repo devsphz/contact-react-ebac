@@ -14,12 +14,12 @@ export const GlobalStyles = createGlobalStyle`
     flex-direction: column;
     align-items: center;
 
-    /* Ajuste para tablets */
+    /* Tablets */
     @media (max-width: 768px) {
       padding: 15px;
     }
 
-    /* Ajuste para mobile */
+    /* Mobile */
     @media (max-width: 480px) {
       padding: 10px;
     }
@@ -49,14 +49,12 @@ export const GlobalStyles = createGlobalStyle`
     margin: 15px 0 10px;
     font-size: 1.2rem;
 
-    /* Ajuste para mobile */
     @media (max-width: 480px) {
       font-size: 1rem;
       margin: 12px 0 8px;
     }
   }
 
-  /* Melhorias de acessibilidade e toque */
   button, input {
     font-size: 1rem;
     @media (max-width: 480px) {
