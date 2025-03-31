@@ -1,6 +1,7 @@
 import type React from 'react'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import Cleave from 'cleave.js/react'
 import { addContact, editContact } from '../../store/contactSlice'
 import { Button, Form, Input } from './styles'
 import type { Contact } from '../../types/contact'
