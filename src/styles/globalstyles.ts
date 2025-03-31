@@ -20,6 +20,5 @@ export const GlobalStyles = createGlobalStyle`
   h5 {
     margin-top: 20px;
     color: #333;
-    
   }
 `

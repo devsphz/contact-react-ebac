@@ -1,3 +1,4 @@
+// Importações
 import type React from 'react'
 import { useState } from 'react'
 import ContactForm from './components/contact/formContact'
@@ -8,6 +9,7 @@ import type { Contact } from './types/contact'
 const App: React.FC = () => {
   const [currentContact, setCurrentContact] = useState<Contact | null>(null)
 
+  //Renderiza :)
   return (
     <>
       <GlobalStyles />

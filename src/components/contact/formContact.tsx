@@ -1,11 +1,13 @@
 import type React from 'react'
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import Cleave from 'cleave.js/react'
+import { useDispatch } from 'react-redux' // usando o redux para o nosso gerenciamento
+import Cleave from 'cleave.js/react' //Adicionei o cleave para usar uma máscara no campo telefone
 import { addContact, editContact } from '../../store/contactSlice'
 import { Button, Form, Input } from './styles'
 import type { Contact } from '../../types/contact'
-interface FormContactProps {
+
+// Recebe editar e atualizar o estado
+interface FormContactProps { // Props
   currentContact: Contact | null
   setCurrentContact: React.Dispatch<React.SetStateAction<Contact | null>>
 }
@@ -15,7 +17,7 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const dispatch = useDispatch()
-
+  // Preencher formulário
   useEffect(() => {
     if (currentContact) {
       setName(currentContact.name)
@@ -25,11 +27,11 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
   }, [currentContact])
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault() // Prevenindo o comportamento
 
     if (currentContact) {
       dispatch(
-        editContact({
+        editContact({ // editar o contato
           ...currentContact,
           name,
           email,
@@ -37,7 +39,7 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
         })
       )
     } else {
-      const newContact = {
+      const newContact = { //Adicionar com o novo ID
         id: new Date().toISOString(),
         name,
         email,
@@ -51,7 +53,7 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
     setEmail('')
     setPhone('')
   }
-
+  // Renderiza :)
   return (
     <Form onSubmit={handleSubmit}>
       <h5>Nome:</h5>
@@ -71,9 +73,9 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
         required
       />
       <h5>Telefone:</h5>
-      <Cleave
+      <Cleave // Máscara aplicada no nosso input, para não passar do valor conforme o padrão (+55 BR)
       className="meu-input"
-        style={{ 
+        style={{ // estilo padrão do nosso input no formulário
           padding: '10px',
           border: '1px solid #ccc',
           borderRadius: '5px',
@@ -81,7 +83,8 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
         }}
         value={phone}
         onChange={(e: { target: { value: React.SetStateAction<string> } }) => setPhone(e.target.value)}
-        options={{ delimiters: ['(', ') ', ' ', '-'], blocks: [0, 2, 5, 4], numericOnly: true }}
+        options={{ delimiters: ['(', ') ', ' ', '-'], blocks: [0, 2, 5, 4], numericOnly: true }} 
+        // Formatação do Cleave com os separadores no bloco
         placeholder="(99) 99999-9999"
       />
       <Button type="submit">

@@ -1,8 +1,8 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import type { Contact } from '../types/contact'
+import type { Contact } from '../types/contact' // estrutura do nosso contato
 
 type ContactsState = Contact[]
-
+// evita perda ao recarregar a página LocalStorage 
 const loadFromLocalStorage = (): ContactsState => {
   const data = localStorage.getItem('contacts')
   return data ? JSON.parse(data) : []
@@ -17,7 +17,7 @@ const initialState: ContactsState = loadFromLocalStorage()
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  reducers: {
+  reducers: { // funções no estado do formulário
     addContact: (state, action: PayloadAction<Contact>) => {
       state.push(action.payload)
       saveToLocalStorage(state)
@@ -38,6 +38,6 @@ const contactsSlice = createSlice({
     }
   }
 })
-
+//Exportando as funções
 export const { addContact, removeContact, editContact } = contactsSlice.actions
 export default contactsSlice.reducer
