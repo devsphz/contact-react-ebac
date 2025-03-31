@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { addContact, editContact } from '../../store/contactSlice'
 import { Button, Form, Input } from './styles'
 import type { Contact } from '../../types/contact'
-
+import Cleave from 'cleave.js/react'
 interface FormContactProps {
   currentContact: Contact | null
   setCurrentContact: React.Dispatch<React.SetStateAction<Contact | null>>
@@ -71,12 +71,18 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
         required
       />
       <h5>Telefone:</h5>
-      <Input
-        type="text"
+      <Cleave
+      className="meu-input"
+        style={{ 
+          padding: '10px',
+          border: '1px solid #ccc',
+          borderRadius: '5px',
+          fontSize: '16px'
+        }}
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-        placeholder="Digite seu Telefone"
-        required
+        options={{ delimiters: ['(', ') ', ' ', '-'], blocks: [0, 2, 5, 4], numericOnly: true }}
+        placeholder="(99) 99999-9999"
       />
       <Button type="submit">
         {currentContact ? 'Editar Contato' : 'Adicionar Contato'}
@@ -86,3 +92,4 @@ const FormContact: React.FC<FormContactProps> = ({ currentContact, setCurrentCon
 }
 
 export default FormContact
+
